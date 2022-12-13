@@ -1,0 +1,43 @@
+{
+    "providerId": "goentri.com",
+    "providerName": "Entri",
+    "serviceId": "sparkpost_test",
+    "serviceName": "sparkpost_test",
+    "version": 1,
+    "logoUrl": "https://cdn.goentri.com/logo.svg",
+    "description": "Allows user to easily set up domain using Entri",
+    "syncPubKeyDomain": "goentri.com",
+    "syncRedirectDomain": "api.goentri.com, goentri.com, entri.com, app.entri.com,app.goentri.com",
+    "variableDescription": "sparkpost_txt_hostname: hostname set up, sparkpost_cname_dkim: dkim value, sparkpost_cname_target: CNAME target,  ",
+    "sharedProviderName": true,
+    "records": [
+        {
+            "groupId": "sendingDomains",
+            "type": "TXT",
+            "host": "%sparkpost_txt_hostname%",
+            "data": "%sparkpost_txt_dkim%",
+            "ttl": 3600
+        },
+        {
+            "groupId": "bounceDomain",
+            "type": "CNAME",
+            "pointsTo": "%sparkpost_cname_target%",
+            "host": "%sparkpost_cname_name%",
+            "ttl": 3600
+        },
+        {
+            "groupId": "bounceDomainAndSendDomain",
+            "type": "CNAME",
+            "pointsTo": "%sparkpost_cname_target%",
+            "host": "%sparkpost_cname_name%",
+            "ttl": 3600
+        },
+        {
+            "groupId": "bounceDomainAndSendDomain",
+            "type": "TXT",
+            "host": "%sparkpost_txt_hostname%",
+            "data": "%sparkpost_txt_dkim%",
+            "ttl": 3600
+        }
+    ]
+}
